@@ -8,7 +8,7 @@
                 mdi-check-circle-outline
             </v-icon>
         </v-btn>
-        <v-btn icon color="red">
+        <v-btn icon color="red" @click="deleteTask(todo.id)">
             <v-icon>
                 mdi-delete-empty
             </v-icon>
@@ -19,6 +19,11 @@
 <script>
 export default {
   name: 'Todo',
-  props: ['todo']
+  props: ['todo'],
+  methods: {
+    deleteTask (id) {
+      this.$emit('delete-task', id)
+    }
+  }
 }
 </script>
