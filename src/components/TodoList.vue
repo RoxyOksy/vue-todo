@@ -1,5 +1,6 @@
 <template>
     <v-container>
+        <add-task />
         <v-card>
             <todo v-for="todo in todos"
                   :todo="todo"
@@ -16,11 +17,12 @@
 
 <script>
 import Todo from './Todo'
+import AddTask from '@/components/AddTask'
 
 export default {
   name: 'TodoList',
   props: ['todos'],
-  components: { Todo }
+  components: { Todo, AddTask }
 }
 </script>
 
@@ -28,5 +30,8 @@ export default {
 .container {
     width: 400px;
     margin: 50px auto;
+}
+.row {
+    margin: 0;
 }
 </style>

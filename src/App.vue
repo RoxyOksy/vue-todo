@@ -5,10 +5,9 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import TodoList from './components/TodoList.vue'
+import TodoList from './components/TodoList'
 
-export default Vue.extend({
+export default {
   name: 'App',
   components: {
     TodoList
@@ -34,5 +33,5 @@ export default Vue.extend({
       }]
     }
   }
-})
+}
 </script>
