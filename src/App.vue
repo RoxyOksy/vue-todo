@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <v-app id="app">
     <todo-list :todos="todos" />
-  </div>
+  </v-app>
 </template>
 
 <script lang="ts">
@@ -16,34 +16,23 @@ export default Vue.extend({
   data () {
     return {
       todos: [{
-        title: 'Todo A',
-        project: 'Project A',
+        title: 'Todo 1',
+        project: 'task 1',
         done: false
       }, {
-        title: 'Todo B',
-        project: 'Project B',
+        title: 'Todo 2',
+        project: 'task 2',
         done: true
       }, {
-        title: 'Todo C',
-        project: 'Project C',
+        title: 'Todo 3',
+        project: 'task 3',
         done: false
       }, {
-        title: 'Todo D',
-        project: 'Project D',
+        title: 'Todo 4',
+        project: 'task 4',
         done: false
       }]
     }
   }
 })
 </script>
-
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

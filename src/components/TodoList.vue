@@ -1,13 +1,29 @@
 <template>
-  <div>
-    <p>Completed tasks: {{ todos.filter(todo => todo.done === true).length }}</p>
-    <p>Pending tasks: {{ todos.filter(todo => todo.done === false).length }}</p>
-    <ul>
-      <li>TODO A</li>
-      <li>TODO B</li>
-      <li>TODO C</li>
-    </ul>
-  </div>
+    <v-container>
+        <v-card>
+            <v-list-item v-for="todo in todos" :key="todo.title"  elevation="2" class="d-flex flex-row p-3">
+                <v-list-item-content>
+                    <v-list-item-title>
+                        {{ todo.title }}
+                    </v-list-item-title>
+                </v-list-item-content>
+                <v-btn icon :color="todo.done && 'green'">
+                    <v-icon>
+                        mdi-check-circle-outline
+                    </v-icon>
+                </v-btn>
+                <v-btn icon color="red">
+                    <v-icon>
+                        mdi-delete-empty
+                    </v-icon>
+                </v-btn>
+            </v-list-item>
+            <v-divider inset></v-divider>
+        </v-card>
+        <p class="ma-3 text-right">
+            {{ todos.filter(todo => todo.done !== true).length }} in progress, {{ todos.filter(todo => todo.done === true).length }} done
+        </p>
+    </v-container>
 </template>
 
 <script lang="ts">
@@ -19,14 +35,8 @@ export default Vue.extend({
 })
 </script>
 <style scoped lang="less">
-
-ul {
-  list-style-type: none;
-  padding: 0;
+.container {
+    width: 400px;
+    margin: 50px auto;
 }
-
-li {
-  margin: 10px;
-}
-
 </style>
