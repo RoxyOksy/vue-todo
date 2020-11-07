@@ -1,24 +1,12 @@
 <template>
     <v-container>
         <v-card>
-            <v-list-item v-for="todo in todos" :key="todo.title"  elevation="2" class="d-flex flex-row p-3">
-                <v-list-item-content>
-                    <v-list-item-title>
-                        {{ todo.title }}
-                    </v-list-item-title>
-                </v-list-item-content>
-                <v-btn icon :color="todo.done && 'green'">
-                    <v-icon>
-                        mdi-check-circle-outline
-                    </v-icon>
-                </v-btn>
-                <v-btn icon color="red">
-                    <v-icon>
-                        mdi-delete-empty
-                    </v-icon>
-                </v-btn>
-            </v-list-item>
-            <v-divider inset></v-divider>
+            <todo v-for="todo in todos"
+                  :todo="todo"
+                  :key="todo.title"
+                  elevation="2"
+                  class="d-flex flex-row p-3"
+            />
         </v-card>
         <p class="ma-3 text-right">
             {{ todos.filter(todo => todo.done !== true).length }} in progress, {{ todos.filter(todo => todo.done === true).length }} done
@@ -26,14 +14,16 @@
     </v-container>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script>
+import Todo from './Todo'
 
-export default Vue.extend({
+export default {
   name: 'TodoList',
-  props: ['todos']
-})
+  props: ['todos'],
+  components: { Todo }
+}
 </script>
+
 <style scoped lang="less">
 .container {
     width: 400px;
