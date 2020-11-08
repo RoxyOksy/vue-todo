@@ -3,7 +3,9 @@
         <v-list-item-title>
             {{ todo.title }}
         </v-list-item-title>
-        <v-btn icon :color="todo.done && 'green'">
+        <v-btn icon
+               :color="todo.done && 'green'"
+               @click="completeTask(todo)">
             <v-icon>
                 mdi-check-circle-outline
             </v-icon>
@@ -23,6 +25,9 @@ export default {
   methods: {
     deleteTask (id) {
       this.$emit('delete-task', id)
+    },
+    completeTask (todo) {
+      this.$emit('complete-task', todo)
     }
   }
 }

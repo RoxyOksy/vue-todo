@@ -25,19 +25,11 @@ export default {
     return {
       todos: [{
         id: uuid(),
-        title: 'Todo 1',
-        done: false
-      }, {
-        id: uuid(),
-        title: 'Todo 2',
+        title: 'Create ToDo using Vue',
         done: true
       }, {
         id: uuid(),
-        title: 'Todo 3',
-        done: false
-      }, {
-        id: uuid(),
-        title: 'Todo 4',
+        title: 'Learn Vuex',
         done: false
       }]
     }
