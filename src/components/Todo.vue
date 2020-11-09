@@ -18,17 +18,23 @@
     </v-list-item>
 </template>
 
-<script>
-export default {
-  name: 'Todo',
-  props: ['todo'],
-  methods: {
-    deleteTask (id) {
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator'
+import { ITodo } from '@/components/types'
+
+@Component({
+  name: 'todo'
+})
+export default class Todo extends Vue {
+    @Prop() todo: ITodo
+
+    deleteTask (id: string) {
       this.$emit('delete-task', id)
-    },
-    completeTask (todo) {
+    }
+
+    completeTask (todo: ITodo) {
       this.$emit('complete-task', todo)
     }
-  }
 }
+
 </script>

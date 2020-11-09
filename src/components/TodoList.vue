@@ -11,22 +11,27 @@
     </v-card>
 </template>
 
-<script>
-import Todo from './Todo'
+<script lang="ts">
 
-export default {
-  name: 'TodoList',
-  props: ['todos'],
-  components: { Todo },
-  methods: {
-    deleteTask (id) {
+import { Component, Prop, Vue } from 'vue-property-decorator'
+
+import todo from '@/components/Todo.vue'
+import { ITodo } from './types'
+
+@Component({
+  components: { todo }
+})
+export default class TodoList extends Vue {
+    @Prop() todos: ITodo[]
+
+    deleteTask (id: string): void {
       const index = this.todos.findIndex(todo => todo.id === id)
       this.todos.splice(index, 1)
-    },
-    completeTask (task) {
+    }
+
+    completeTask (task: ITodo) {
       task.done = !task.done
     }
-  }
 }
 
 </script>

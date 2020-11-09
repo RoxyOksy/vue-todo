@@ -1,48 +1,54 @@
 <template>
   <v-app id="app">
       <v-container>
-          <add-task @add-task="addTask" />
-          <todo-list :todos="todos" />
+          <addTask @add-task="addTask" />
+          <todoList :todos="todos" />
           <p class="ma-3 text-right">
-              {{ todos.filter(todo => todo.done !== true).length }} in progress, {{ todos.filter(todo => todo.done === true).length }} done
+              {{ info.inProgress }} in progress, {{ info.done }} done
           </p>
       </v-container>
   </v-app>
 </template>
 
 <script lang="ts">
-import TodoList from './components/TodoList'
-import AddTask from '@/components/AddTask'
+import { Component, Vue } from 'vue-property-decorator'
 import { v4 as uuid } from 'uuid'
 
-export default {
-  name: 'App',
+import todoList from '@/components/TodoList.vue'
+import addTask from '@/components/AddTask.vue'
+import { ITodo } from '@/components/types'
+
+@Component({
   components: {
-    TodoList,
-    AddTask
-  },
-  data () {
-    return {
-      todos: [{
-        id: uuid(),
-        title: 'Create ToDo using Vue',
-        done: true
-      }, {
-        id: uuid(),
-        title: 'Learn Vuex',
-        done: false
-      }]
+    todoList,
+    addTask
+  }
+})
+export default class App extends Vue {
+    todos: ITodo[] = [{
+      id: uuid(),
+      title: 'Create ToDo using Vue',
+      done: true
+    }, {
+      id: uuid(),
+      title: 'Learn Vuex',
+      done: false
+    }]
+
+    get info () {
+      return {
+        inProgress: this.todos.filter(todo => todo.done !== true).length,
+        done: this.todos.filter(todo => todo.done === true).length
+      }
     }
-  },
-  methods: {
-    addTask (title) {
+
+    addTask (title: string) {
       this.todos.push({
         id: uuid(),
         title,
         done: false
       })
     }
-  }
 }
 </script>
 

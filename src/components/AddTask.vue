@@ -7,21 +7,18 @@
     </v-row>
 </template>
 
-<script>
-export default {
-  name: 'AddTask',
-  data () {
-    return {
-      titleText: ''
-    }
-  },
-  methods: {
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+
+@Component
+export default class AddTask extends Vue {
+    titleText = '';
+
     addTask () {
       if (this.titleText.trim()) {
         this.$emit('add-task', this.titleText)
         this.titleText = ''
       }
     }
-  }
 }
 </script>
