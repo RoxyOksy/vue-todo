@@ -1,11 +1,13 @@
 <template>
     <v-list-item elevation="2" class="d-flex flex-row p-3" >
-        <v-list-item-title>
+        <v-list-item-title
+          :style="todo.done ? 'text-decoration:line-through' : ''"
+        >
             {{ todo.title }}
         </v-list-item-title>
         <v-btn icon
                :color="todo.done && 'green'"
-               @click="completeTask(todo)">
+               @click="completeTask(todo.id)">
             <v-icon>
                 mdi-check-circle-outline
             </v-icon>
@@ -26,14 +28,14 @@ import { ITodo } from '@/components/types'
   name: 'todo'
 })
 export default class Todo extends Vue {
-    @Prop() todo: ITodo
+    @Prop() todo!: ITodo;
 
     deleteTask (id: string) {
-      this.$emit('delete-task', id)
+      this.$store.dispatch('deleteTask', id)
     }
 
-    completeTask (todo: ITodo) {
-      this.$emit('complete-task', todo)
+    completeTask (id: string) {
+      this.$store.dispatch('completeTask', id)
     }
 }
 

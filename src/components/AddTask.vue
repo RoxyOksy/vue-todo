@@ -9,6 +9,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { v4 as uuid } from 'uuid'
 
 @Component
 export default class AddTask extends Vue {
@@ -16,7 +17,12 @@ export default class AddTask extends Vue {
 
     addTask () {
       if (this.titleText.trim()) {
-        this.$emit('add-task', this.titleText)
+        const newTask = {
+          id: uuid(),
+          title: this.titleText,
+          done: false
+        }
+        this.$store.dispatch('addTask', newTask)
         this.titleText = ''
       }
     }
