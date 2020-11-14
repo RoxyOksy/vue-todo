@@ -6,7 +6,7 @@
             {{ todo.title }}
         </v-list-item-title>
         <v-btn icon
-               :color="todo.done && 'green'"
+               :color="todo.done ? 'green' : 'unset'"
                @click="completeTask(todo.id)">
             <v-icon>
                 mdi-check-circle-outline

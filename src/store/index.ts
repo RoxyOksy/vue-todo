@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex, { StoreOptions } from 'vuex'
 import { ITodo } from '@/components/types'
 import { v4 as uuid } from 'uuid'
-import { IStore } from '@/store/types';
+import { IStore } from '@/store/types'
 
 Vue.use(Vuex)
 
@@ -51,7 +51,7 @@ const store: StoreOptions<IStore> = {
   getters: {
     todos (state): ITodo[] {
       return state.data
-    },
+    }
   },
   modules: {
   }

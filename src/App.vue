@@ -3,9 +3,7 @@
       <v-container>
           <addTask />
           <todoList />
-          <p class="ma-3 text-right">
-              {{ info.inProgress }} in progress, {{ info.done }} done
-          </p>
+          <info />
       </v-container>
   </v-app>
 </template>
@@ -15,24 +13,16 @@ import { Component, Vue } from 'vue-property-decorator'
 
 import todoList from '@/components/TodoList.vue'
 import addTask from '@/components/AddTask.vue'
-import { ITodo } from '@/components/types'
+import info from '@/components/Info.vue'
 
 @Component({
   components: {
     todoList,
-    addTask
+    addTask,
+    info
   }
 })
-export default class App extends Vue {
-  todos: ITodo[] = this.$store.getters.todos
-
-  get info () {
-    return {
-      inProgress: this.todos.filter(todo => !todo.done).length,
-      done: this.todos.filter(todo => todo.done).length
-    }
-  }
-}
+export default class App extends Vue {}
 </script>
 
 <style scoped lang="less">
