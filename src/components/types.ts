@@ -3,3 +3,8 @@ export interface ITodo {
     title: string;
     done: boolean;
 }
+
+export interface ChartData {
+    name: string;
+    value: number;
+}

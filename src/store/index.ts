@@ -49,7 +49,7 @@ const store: StoreOptions<IStore> = {
     }
   },
   getters: {
-    todos (state): ITodo[] {
+    todos (state: IStore): ITodo[] {
       return state.data
     }
   },
